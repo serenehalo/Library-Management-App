@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block head %}
+    
+    <title>Home page</title>
+    <style>
+        h1{
+            font-family: 'IBM Plex Mono', monospace;
+        }
+    </style>
+{% endblock %}
+
+{% block userbutton %}
+    <a class="cta" href="{{url_for('register')}}">Register</a>
+{% endblock %}
+
+{% block body %}
+<div style="display:flex; flex-direction: column; padding-bottom:3%;">
+    <h1 style="color:white;">Hey there,welcome to OtakuLib!</h1>
+     
+    <a href="{{url_for('signin')}}" style="align-self:center;text-align:center; text-decoration:none;color:white;"><div class="styled-button">Sign In</div></a>
+        
+</div>
+{% endblock %}

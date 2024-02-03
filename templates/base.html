@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        {% block head %}
+        {% endblock %}
+
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+        <link href="../static/styles/bubbles.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Navbar</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../static/styles/mainstyle.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+    </head>
+    <body style="height:100vh;">
+        <header>
+            <a class="logo" href="/">OtakuLib</a>
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">Trending</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </nav>
+            {% block userbutton %}
+                
+            {% endblock %}
+                
+
+        </header>
+    <div class="overlay">
+        <a class="close">&times;</a>
+        <div class="overlay__content">
+            <a href="#">Books</a>
+            <a href="#">Trending</a>
+            <a href="#">FAQ</a>
+        </div>
+    </div>
+    <div class = "body-content">
+      {% block body %}
+      {% endblock %}
+    </div>
+    <div class = "gradient-bg">
+      <div class="gradients-container">
+        <div class="g1"></div>
+        <div class="g2"></div>
+        <div class="g3"></div>
+        <div class="g4"></div>
+        <div class="g5"></div>
+      </div>
+    </div>
+    <div class ="footer-container">
+        <div class="footer-contents"> UwU</div>
+        <div class="footer-contents"> 2024 Copyright @ Aarsh Choudhary</div>
+        <div class="footer-contents"> XoXo</div>
+    </div>
+    
+    
+    </body>
+</html>
