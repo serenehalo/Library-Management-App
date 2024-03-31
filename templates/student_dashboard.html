@@ -1,0 +1,35 @@
+{% extends "dashboard.html" %}
+
+{% block dashboardheader %}
+    <title>Student Dashboard</title>
+{% endblock %} 
+
+{% block userbutton %}
+    <a class="cta" href="{{url_for('signout')}}">Sign Out</a>
+{% endblock %}
+
+{% block body %}
+
+<div class="dashboard-container">
+  <div class="side-menu">
+    
+    {% block buttons %}
+    <a href="#" class="menu-item"></a>
+    <a href="{{url_for('authors')}}" class="menu-item">Authors</a>
+    
+    
+    <a href="{{url_for('student_read')}}" class="menu-item">Read</a>
+    
+    <a href="#" class="menu-item">Return</a>
+    
+    
+    {% endblock %}
+  </div>
+  <div class="content">
+   <!-- Your main content goes here -->
+   <h1 style="font-family: IBM Plex Mono; color: white;">Reading is fun and is exhilarating !</h1>
+    
+  </div>
+</div>
+ 
+{% endblock %}

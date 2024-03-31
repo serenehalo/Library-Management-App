@@ -1,0 +1,49 @@
+{% extends 'librarian_dashboard.html' %}
+
+{% block libhead %}
+    <link href="../static/styles/genres.css" rel="stylesheet">
+    <link href="../static/images/delete.png">
+    
+
+{% endblock %}
+
+{% block libbody %}
+<div class="genre-form">
+    {% if user_type=="librarian"%}
+    <form action="/genres" method="post" class="animated-form">
+        <div class="input-group">
+            <input type="text" class="form-control col-10" name="textfield" placeholder="Genre" aria-describedby="button-addon4">
+            <div class="input-group-append" id="button-addon4">
+                <button type="submit" class="btn btn-success" name="action" value="add">Add</button>
+                <button type="submit" class="btn btn-danger" name ="action" value="remove">Remove</button>
+            </div>
+        </div>
+        {% if genError %}
+            <div class="error-msg">{{ genError }}</div>
+        {% endif %}
+        {% if verMsg %}
+            <div class="success-msg">{{ verMsg }}</div>
+        {% endif %}
+    </form>
+    {% endif %}
+    <br>
+    <div class="cont">
+        {% for g in listGen %}
+        <div class="card-container">
+            <div class="card text-bg-light mb-3" >
+                <div class="card-header">Genre</div>
+                <div class="card-body">
+                  <h5 class="card-title" style="font-family: 'IBM Plex Mono', monospace;">{{g}}</h5>
+                  <p class="card-text"></p>
+                  <a href="{{url_for('search_books_by_genre',genre=g)}}"><button type="button" class="btn btn-dark">Search</button></a>
+
+                  {% if user_type=="librarian" %}
+                  <a href ="{{url_for('delGenre',genre = g)}}" ><img src="static\images\delete.png" alt="Delete" class="delete-icon"> </a>
+                  {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>       
+</div>
+{% endblock %}

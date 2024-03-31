@@ -1,0 +1,116 @@
+.side-menu {
+    height: 100%;
+    width: 13vw;
+    
+    left: 45%;
+    top: 0;
+    background-color: #28242c;
+    padding-top: 20px;
+}
+
+.menu-item {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.menu-item:hover {
+    background-color: #555;
+}
+
+.content {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    flex-wrap: wrap;
+    
+    overflow-y: auto;
+    gap: 0.5vh;
+    margin:1%;
+}
+.content::-webkit-scrollbar{
+    display: none;
+}
+.dashboard-container{
+    display:flex;
+    height:85.7vh;
+    width:100vw;
+    
+}
+.book-card{
+    overflow-y: auto;
+    max-height: 100px;
+    
+
+}
+.book-card::-webkit-scrollbar{
+    display: none;
+    
+}
+.date{
+    display: flex;
+    margin-left: 80%;
+}
+
+.req-buttons{
+    margin-top: 2%;
+}
+/* issue cards display */
+.issue-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.issue-card-row {
+    display: flex;
+    align-items: center;
+}
+
+.issue-card-header {
+    flex: 1;
+    font-weight: bold;
+}
+
+.issue-card-content {
+    flex: 1;
+}
+
+.footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container {
+    display: flex;
+    margin-top: 2%;
+    gap: 0.5%;
+}
+
+.button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px;
+    gap: 2%;
+}
+
+
+
+.button:hover {
+    opacity: 0.8;
+}
+

@@ -1,0 +1,106 @@
+{% extends "librarian_dashboard.html" %}
+
+
+{% block libhead %}
+<link href="../static/styles/addbooks.css" rel="stylesheet">
+
+<link href="../static/styles/dashboard.css" rel="stylesheet">
+{% endblock %}
+
+    
+{% block libbody %}
+
+<div class="container mt-2" style="width:75%">
+    <div class="card custom-width-form animated-form" style="background-color: rgba(255, 255, 255, 0.8);">
+        <div class="card-body">
+            <h2 style="text-align:center">Add Books</h2>
+
+            <form action="{{url_for('addBooks')}}" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <!-- Column 1 -->
+                    <div class="col-md-6">
+                        <div class="form-group text-header">
+                            <div class="pads">
+                                <label for="bookName">Book Name:</label>
+                                <input type="text" class="form-control" id="bookName" name="bookName" >
+                                {% if titleError %}
+                                    <div class="error-msg">{{titleError}}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="authorName">Author's Name:</label>
+                            <input type="text" class="form-control" id="authorName" name="authorName" >
+                            {% if authorsError %}
+                                <div class="error-msg">{{authorsError}}</div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Description</label>
+                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">{{desc}}</textarea>
+                            {% if descError %}
+                                <div class="error-msg">{{descError}}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Column 2 -->
+                    <div class="col-md-6">
+                        <div class="form-group" style="height: 150px; overflow-y: auto;">
+                            <label>Genre(s):</label>
+                            {% for genre in genres %}
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="fictionSwitch" name="genre-switch" value="{{genre}}">
+                                    <label class="custom-control-label" for="genre-switch">{{genre}}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <!-- Display selected genres -->
+                        <input type="text" class="form-control" id="selectedGenres" readonly name="selectedGenres">
+                        {% if genreError %}
+                            <div class="error-msg">{{genreError}}</div>
+                        {% endif %}
+
+                        
+
+                        <br>
+                        <label for="file-upload" class="form-label">Upload Book</label>
+                        
+                        <input type="file" id="file-upload" name="file" accept=".pdf">
+                        {% if fileError %}
+                            <div class="error-msg">{{fileError}}</div>
+                        {% endif %}
+
+                        <br>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    var genreSwitches = document.querySelectorAll('input[name="genre-switch"]');
+    var selectedGenresInput = document.getElementById('selectedGenres');
+
+    genreSwitches.forEach(function (switchElement) {
+        switchElement.addEventListener('change', function () {
+            var selectedGenres = Array.from(genreSwitches)
+                .filter(function (switchElement) {
+                    return switchElement.checked;
+                })
+                .map(function (switchElement) {
+                    return switchElement.value;
+                });
+
+            selectedGenresInput.value = selectedGenres.join(', ');
+        });
+    });
+</script>
+
+
+{% endblock %}

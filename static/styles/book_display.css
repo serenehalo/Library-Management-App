@@ -1,0 +1,17 @@
+.book_content{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+
+}
+.book_display_lib{
+    transition: transform 0.3s, box-shadow 0.3s; /* Add transition for smooth effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.card:hover {
+    transform: scale(0.95); /* Zoom out effect on hover */
+    box-shadow: 0 0 20px rgba(35, 34, 34, 0.8); /* Apply constant glow effect on hover */
+}
+

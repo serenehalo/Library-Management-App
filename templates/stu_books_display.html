@@ -1,0 +1,39 @@
+{% extends "student_dashboard.html" %}
+{% block dashboardheader %}
+    <title>Read Books</title>
+    <link href="../static/styles/book_display.css" rel="stylesheet">
+{% endblock %}
+
+{% block userbutton %}
+    <a class="cta" href="{{url_for('signout')}}">Sign Out</a>
+{% endblock %}
+
+{% block body %}
+
+<div class="dashboard-container">
+    <div class="side-menu">
+        <a href="#" class="menu-item">Home</a>
+        {% block buttons %}
+        
+        <a href="#" class="menu-item">Return</a>
+        
+        {% endblock %}
+    </div>
+    <div class="content">
+        
+        {% for book in books %}
+        <div class="card" style="width: 14rem;margin-right: 30px; padding:1%;height: 80vh;">
+            <img src="../static/bookcover_imgs/{{book.name}}.png" class="card-img-top" alt="{{book.name}}">
+            <h5 class="card-title" style="font-family: 'IBM Plex Mono';margin-left: 2.5%;height:8vh">{{book.name}}</h5>
+            <div class="card-body book-card">
+                
+                <p class="card-text" style="font-size: smaller;">{{book.content}}</p>
+                
+            </div>
+            <a href="#" class="btn btn-danger" style="width:auto;">Delete</a>
+            <a href="#" class="btn btn-warning" style="width: auto;">Issue</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

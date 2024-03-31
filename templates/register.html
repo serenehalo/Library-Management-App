@@ -13,7 +13,7 @@
     <div class="page-content register-page" >
         <div class="form-header">Registration Form</div>
         
-        <form action="/register" method="post">
+        <form action="{% block register_as %}{% endblock %}/register" method="post">
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
@@ -74,6 +74,8 @@
                     </div>
                 </div>
             </div>
+            {% block category %}
+            {% endblock %}
             <div class="row">
                 <div class="col">
                     <div class="mb-3" style="display: flex;justify-content: center;">

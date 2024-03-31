@@ -154,7 +154,7 @@ header {
 .footer-container {
   font-size: 0.9em;
   font-weight: normal;
-  min-height: 3.25vh;
+  min-height: 3.35vh;
   background-color: #1f2937;
   color: #e5e7eb;
   display: flex;
@@ -177,7 +177,7 @@ header {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 3%;
   padding: 3%;
-  
+  max-height: 80vh;
   transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out; 
 }
 
@@ -192,7 +192,24 @@ header {
   font-size: 0.75em;
   animation: shake 0.3s ease-in-out; 
 }
+.success-msg{
+  color: rgb(120, 247, 103);
+  font-size: 0.75em;
+  animation: zoomIn 0.3s ease-in-out; 
+}
 
+
+
+@keyframes zoomIn {
+  from {
+      opacity: 0;
+      transform: scale(0);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
 @keyframes shake {
   0%, 100% {
     transform: translateX(0);

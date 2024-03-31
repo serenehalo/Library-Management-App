@@ -1,0 +1,63 @@
+{% extends "librarian_dashboard.html" %}
+{% block dashboardheader %}
+    <title>Books</title>
+    <link href="../static/styles/book_display.css" rel="stylesheet">
+{% endblock %}
+
+{% block userbutton %}
+    <a class="cta" href="{{url_for('signout')}}">Sign Out</a>
+{% endblock %}
+
+{% block body %}
+
+<div class="dashboard-container">
+    <div class="side-menu">
+        <a href="#" class="menu-item">Home</a>
+        {% block buttons %}
+        {% if user_type=="librarian" %}
+        <a href="{{url_for('addBooks')}}" class="menu-item">Add Books</a>
+        
+        <a href="{{url_for('request_config')}}" class="menu-item">Requests</a>
+        {% endif %}
+        <a href="{{url_for('genres')}}" class="menu-item">Genres</a>
+        <a href="{{url_for('authors')}}" class="menu-item">Authors</a>
+        
+        {% endblock %}
+    </div>
+    <div class="content">
+        {% if successMsg %}
+            <div style="position: absolute;top: 1%;color: rgb(75, 255, 55); width: 60%;z-index:10000; padding: 0.3%;text-align: center;background-color: rgb(39, 39, 39);border-radius: 15px;">{{successMsg}}</div>
+        {% elif errorMsg %}
+            <div style="position: absolute;top: 1%;color: rgb(245, 84, 84); width: 60%;z-index:10000; padding: 0.3%;text-align: center;background-color: rgb(39, 39, 39);border-radius: 15px;">{{errorMsg}}</div>
+        {% endif %}    
+        {% for book in books %}
+        <div class="card book_display_lib" style="width: 14rem;margin-right: 30px; padding:1%;height: 70vh;">
+            <img src="../static/bookcover_imgs/{{book.name}}.png" class="card-img-top" alt="{{book.name}}">
+            <h5 class="card-title" style="font-family: 'IBM Plex Mono';height:8vh;font-size: 18px;">{{book.name}}</h5>
+            <div class="card-body book-card" style="margin-bottom: 5%;">
+                
+                <p class="card-text" style="font-size: smaller;">{{book.content}}</p>
+                
+            </div>
+            
+            <div class="del-button">
+                {% if user_type=="librarian" %}
+                <a href="{{url_for('delete_book',book_id=book.id)}}" class="btn btn-danger" style="width:32%;font-size:12px;">Delete</a>
+                {% endif %}
+                
+                {% if book.id in user_issues %}
+                    
+                    <a href="{{url_for('book_return',book_id=book.id)}}" class="btn btn-info" style="width:31%;font-size:12px;">Return</a>
+                    
+                    
+                {% else %}
+                    <a href="{{url_for('book_issue',book_id=book.id)}}" class="btn btn-warning" style="width:31%;font-size:12px;">Issue</a>
+                {% endif %}
+                <a href="{{url_for('read_disp',book_name=book.name)}}" class="btn btn-dark" style="width:32%;font-size:12px;">Read</a>
+            </div>    
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

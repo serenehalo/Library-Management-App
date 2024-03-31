@@ -1,0 +1,35 @@
+.animated-form:hover {
+    opacity: 0.9; /* Adjust the final opacity value */
+}
+
+.animated-form {
+    transition: all 0.3s ease-out; /* Transition only opacity on hover */
+    opacity:0.75
+}
+
+.zoom-in {
+    animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation-fill-mode: both;
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1; /* Adjust the final opacity value */
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,50 @@
+.genre-form{
+    width:69vw;
+    align-self: center;
+    max-height: 80vh;
+    overflow: auto;
+    
+}
+.genre-form::-webkit-scrollbar{
+    display: none;
+
+    
+}
+.card{
+    max-width: 15vw;
+    min-width: 15vw;
+    margin:1% 2%;
+    width:15vw;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
+.card-container{
+    display: flex;
+    max-width: 69vw;
+    flex-wrap: wrap;
+    padding:1vh;
+}
+.cont{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.delete-icon {
+    width: 20px; /* Adjust as needed */
+    margin-left: 45%;/* Adjust as needed */
+    margin-right: none;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

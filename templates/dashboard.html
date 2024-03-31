@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+    {% block dashboardheader %}
+    {% endblock %} 
+    <link href="../static/styles/dashboard.css" rel="stylesheet">
+    <script src="../static/styles/script.js"></script>     
+    
+    
+{% endblock %}
+
+
+{% block userbutton %}
+    <a class="cta" href="{{url_for('signout')}}">Sign Out</a>
+{% endblock %}
+
+                
+{% block body %}
+<div class="dashboard-container">
+  <div class="side-menu">
+    <a href="#" class="menu-item">Home</a>
+    {% block buttons %}
+    <a href="#" class="menu-item">About</a>
+    <a href="#" class="menu-item">Services</a>
+    
+<a href="#" class="menu-item">Contact</a>
+    {% endblock %}
+  </div>
+  <div class="content">
+    <!-- Your main content goes here -->
+    <h1 style="font-family: IBM Plex Mono; color: white;">Reading is fun and is exhilarating !</h1>
+    
+  </div>
+</div>
+{% endblock %}

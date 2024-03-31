@@ -1,0 +1,18 @@
+{% extends "register.html" %}
+{% block register_as %}
+/librarian
+{% endblock %}
+
+{% block category %}
+<div class="row">
+    <div class="col">
+        <div class="mb-3">
+            <label for="passcode" class="form-label">Passcode</label>
+            <input type="text" class="form-control" id="passcode" placeholder="***key***" name="passcode">
+            {% if passcodeError %}
+            <div class="error-msg">{{passcodeError}}</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -23,14 +23,28 @@
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
     </head>
     <body style="height:100vh;">
-        <header>
+        <header style="height: 11vh;">
             <a class="logo" href="/">OtakuLib</a>
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Trending</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
+            
+            <nav style="width: 40%;display: flex;margin-left: 30%;">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin: 1.% 0;">
+                    Select
+                  </a>
+                
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{url_for('genres')}}">Genres</a></li>
+                    <li><a class="dropdown-item" href="{{url_for('authors')}}">Authors</a></li>
+                    <li><a class="dropdown-item" href="{{url_for('student_read')}}">Books</a></li>
+                  </ul>
+                <div style="margin-left: 2%;width:106%;">
+                    
+                    <div class="container-fluid">
+                        <form class="d-flex" role="search" method="GET" action="{{ url }}">
+                          <input class="form-control me-2" type="text" placeholder="Search" name="search_query">
+                          <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
             </nav>
             {% block userbutton %}
                 

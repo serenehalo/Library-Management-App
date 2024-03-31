@@ -1,0 +1,40 @@
+{% extends "dashboard.html" %}
+
+{% block dashboardheader %}
+    <title>Librarian Dashboard</title>
+    {% block libhead %}
+    {% endblock %} 
+
+{% endblock %} 
+
+{% block userbutton %}
+    <a class="cta" href="{{url_for('signout')}}">Sign Out</a>
+{% endblock %}
+
+{% block body %}
+
+<div class="dashboard-container">
+  <div class="side-menu">
+    
+    {% block buttons %}
+    <a href="{{url_for('lib_display')}}" class="menu-item ">Books</a>
+    
+    {% if user_type=="librarian" %}
+    <a href="{{url_for('addBooks')}}" class="menu-item">Add Books</a>
+    
+    <a href="{{url_for('request_config')}}" class="menu-item">Requests</a>
+    {% endif %}
+    <a href="{{url_for('genres')}}" class="menu-item">Genres</a>
+    <a href="{{url_for('authors')}}" class="menu-item">Authors</a>
+    
+    {% endblock %}
+  </div>
+  
+  <div class="content">
+    {% block libbody %}<!-- Your main content goes here -->
+    <h1 style="font-family: IBM Plex Mono; color: white;">Reading is fun and is exhilarating !</h1>
+    
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}

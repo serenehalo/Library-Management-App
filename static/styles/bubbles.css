@@ -1,5 +1,3 @@
-
-
 .text-container {
   /*z-index: 100;*/
   width: 100vw;
@@ -25,15 +23,16 @@
   align-items: center;
   justify-content: center;
 }
+
 :root {
-  --color-bg1: rgb(108, 0, 162);
-  --color-bg2: rgb(0, 17, 82);
-  --color1: 18, 113, 255;
-  --color2: 221, 74, 255;
-  --color3: 100, 220, 255;
-  --color4: 200, 50, 50;
-  --color5: 180, 180, 50;
-  --color-interactive: 140, 100, 255;
+  --color-bg1: rgb(239, 235, 215); /* Antique white */
+  --color-bg2: rgb(210, 180, 140); /* Tan */
+  --color1: 255, 228, 181;         /* Moccasin */
+  --color2: 218, 165, 32;          /* Goldenrod */
+  --color3: 205, 133, 63;          /* Dark goldenrod */
+  --color4: 244, 164, 96;          /* Sandy brown */
+  --color5: 210, 105, 30;          /* Chocolate */
+  --color-interactive: 255, 215, 0; /* Gold */
   --circle-size: 80%;
   --blending: hard-light;
 }
@@ -172,16 +171,4 @@
     opacity: 1;
   }
 
-  .interactive {
-    position: absolute;
-    background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.8) 0, rgba(var(--color-interactive), 0) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
-
-    width: 100%;
-    height: 100%;
-    top: -50%;
-    left: -50%;
-
-    opacity: 0.7;
-  }
 }

@@ -1,0 +1,92 @@
+{% extends "librarian_dashboard.html" %}
+
+{% block dashboardheader %}
+    <title>Requests</title>
+    {% block libhead %}
+    {% endblock %} 
+    
+{% endblock %} 
+
+
+
+{% block userbutton %}
+    <a class="cta" href="{{url_for('signout')}}">Sign Out</a>
+{% endblock %}
+
+{% block body %}
+
+<div class="dashboard-container">
+    <div class="side-menu">
+    <a href="{{url_for('signin')}}" class="menu-item">Home</a>
+    {% block buttons %}
+    <a href="{{url_for('lib_display')}}" class="menu-item ">Books</a>
+    
+    {% if user_type=="librarian" %}
+    <a href="{{url_for('addBooks')}}" class="menu-item">Add Books</a>
+    
+    
+    {% endif %}
+    <a href="{{url_for('genres')}}" class="menu-item">Genres</a>
+    
+    {% endblock %}
+
+    </div>
+    <div class="content">
+    {% block libbody %}<!-- Your main content goes here -->
+    {% for issueRequest in issue_req %}
+    <div class="card" style="width:80%;">
+        <div class="card-header">
+          {{ issueRequest.status }}
+        </div>
+        <div class="card-body" >
+          <div class="row" style="font-family: IBM Plex Mono,sans-serif;">
+            <div class="col-md-6">
+              <h5 class="card-text">📙{{ books[issueRequest.book_id].name }}</h5>
+            </div>
+            <div class="col-md-6">
+              <h5 class="card-text">👤{{ users[issueRequest.user_id].firstname }} {{ users[issueRequest.user_id].lastname }}</h5>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 2%;">
+            <div class="col-md-6">
+              <p class="card-text">⏰: {{ issueRequest.issue_date }}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="card-text">📅: {{ issueRequest.return_date }}</p>
+            </div>
+          </div>
+          <div class="button-container">
+            {% if issueRequest.status=="Requested" %}
+            <a href="{{ url_for('request_action', issue_id=issueRequest.id, action='issue') }}" class="btn btn-success">Issue</a>
+            <a href="{{ url_for('request_action', issue_id=issueRequest.id, action='reject') }}" class="btn btn-danger">Reject</a>
+            {% elif issueRequest.status =="Book Issued" %}
+            <a href="{{ url_for('request_action', issue_id=issueRequest.id, action='reissue') }}" class="btn btn-success">Re-Issue</a>
+            <a href="{{ url_for('request_action', issue_id=issueRequest.id, action='revoke') }}" class="btn btn-danger">Revoke</a>
+            {% elif issueRequest.status=="Revoked" %}
+            <a href="{{ url_for('request_action', issue_id=issueRequest.id, action='reissue') }}" class="btn btn-success">Re-Issue</a>
+            <a href="{{ url_for('request_action', issue_id=issueRequest.id, action='remove') }}" class="btn btn-danger">Remove</a>
+            {% elif issueRequest.status=="Returned" %}
+            <a href="{{ url_for('request_action', issue_id=issueRequest.id, action='reissue') }}" class="btn btn-success">Re-Issue</a>
+            <a href="{{ url_for('request_action', issue_id=issueRequest.id, action='remove') }}" class="btn btn-danger">Remove</a>
+            {% elif issueRequest.status=="Rejected" %}
+            <a href="{{ url_for('request_action', issue_id=issueRequest.id, action='issue') }}" class="btn btn-success">Issue</a>
+            <a href="{{ url_for('request_action', issue_id=issueRequest.id, action='remove') }}" class="btn btn-danger">Remove</a>
+            
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+    {% endfor %}
+
+    
+    {% endblock %}
+  
+    </div>
+</div>
+  
+
+{% endblock %}
